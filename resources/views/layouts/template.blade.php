@@ -41,7 +41,7 @@
                             <p>Novo Cliente</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('clientetable')">
                         <a class="nav-link" href="{{route('tableClientes')}}">
                             <i class="material-icons">dashboard</i>
                             <p>Lista de Clientes</p>
