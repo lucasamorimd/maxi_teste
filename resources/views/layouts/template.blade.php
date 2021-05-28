@@ -35,7 +35,7 @@
                             <p>Home</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('clienteform')">
                         <a class="nav-link" href="{{route('cliente')}}">
                             <i class="material-icons">dashboard</i>
                             <p>Novo Cliente</p>
@@ -47,7 +47,7 @@
                             <p>Lista de Clientes</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('propostaform')">
                         <a class="nav-link" href="{{route('proposta')}}">
                             <i class="material-icons">dashboard</i>
                             <p>Cadastrar Proposta</p>
