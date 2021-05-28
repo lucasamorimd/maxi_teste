@@ -16,22 +16,29 @@ use App\Http\Controllers\PropostaController;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'home')->name('home');
 
 //Ações para Usuário
-Route::get('/usuario', [UsuarioController::class, 'showFormUsuario']);
-Route::post('/cadastra-usuario', [UsuarioController::class, 'actionCadastraUsuario']);
-Route::get('/lista-usuario', [UsuarioController::class, 'showListUsuario']);
+Route::prefix('/usuario')->group(function () {
+    Route::get('/', [UsuarioController::class, 'showFormUsuario'])->name('usuario');
+    Route::post('/cadastra-usuario', [UsuarioController::class, 'actionCadastraUsuario'])->name('formUsuarioAction');
+    Route::get('/lista-usuario', [UsuarioController::class, 'showListUsuario'])->name('tableUsuario');
+});
 
 //Ações para Clientes
-Route::get('/cliente', [ClienteController::class, 'showFormCliente']);
-Route::post('/cadastra-cliente', [ClienteController::class, 'actionCadastraCliente']);
-Route::get('/lista-cliente', [ClienteController::class, 'showListCliente']);
-Route::post('/cliente/{nome}', [ClienteController::class, 'showClienteByName']);
+Route::prefix('/cliente')->group(function () {
+    Route::get('/', [ClienteController::class, 'showFormCliente'])->name('cliente');
+    Route::post('/cadastra-cliente', [ClienteController::class, 'actionCadastraCliente'])->name('formClienteAction');
+    Route::post('/cliente/{nome}', [ClienteController::class, 'showClienteByName'])->name('tableClienteByName');
+    Route::get('/lista-cliente', [ClienteController::class, 'showListCliente'])->name('tableClientes');
+});
 
 //Ações para Propostas
-Route::get('/proposta', [PropostaController::class, 'showFormProposta']);
-Route::post('/cadastra-proposta', [PropostaController::class, 'actionCadastraProposta']);
+Route::prefix('proposta')->group(function () {
+    Route::get('/', [PropostaController::class, 'showFormProposta'])->name('proposta');
+    Route::get('/lista-propostas', [PropostaController::class, 'showListProposta'])->name('tablePropostas');
+    Route::post('/cadastra-proposta', [PropostaController::class, 'actionCadastraProposta'])->name('formPropostaAction');
+});
 
 Route::fallback(function () {
     return view('404');
