@@ -29,17 +29,15 @@
                             @if(count($listaClientes)>0)
                             @foreach($listaClientes as $cliente)
                             <tr>
-
                                 <td class="text-center">{{$cliente->razao_social}}</td>
                                 <td class="text-center">{{$cliente->nome_fantasia}}</td>
                                 <td class="text-center">{{$cliente->cnpj}}</td>
-                                <td class="">{{$cliente->endereco}}</td>
+                                <td>{{$cliente->endereco}}</td>
                                 <td class="text-center">{{$cliente->email}}</td>
                                 <td class="text-center">{{$cliente->telefone}}</td>
                                 <td class="text-center">{{$cliente->nome_responsavel}}</td>
                                 <td class="text-center">{{$cliente->cpf}}</td>
                                 <td class="text-center">{{$cliente->celular}}</td>
-
                             </tr>
                             @endforeach
                             @else

@@ -53,7 +53,7 @@
                             <p>Cadastrar Proposta</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('propostatable')">
                         <a class="nav-link" href="{{route('tablePropostas')}}">
                             <i class="material-icons">dashboard</i>
                             <p>Propostas Cadastradas</p>

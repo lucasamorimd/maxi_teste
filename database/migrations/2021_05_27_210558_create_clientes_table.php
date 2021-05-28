@@ -19,13 +19,13 @@ class CreateClientesTable extends Migration
             $table->string('nome_fantasia');
             $table->string('cnpj');
             $table->string('endereco');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('telefone');
             $table->string('nome_responsavel');
             $table->string('cpf');
             $table->string('celular');
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->dateTime('cliente_updated_at')->nullable();
+            $table->dateTime('cliente_created_at')->nullable();
         });
     }
 
