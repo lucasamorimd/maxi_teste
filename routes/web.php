@@ -29,7 +29,8 @@ Route::prefix('/usuario')->group(function () {
 Route::prefix('/cliente')->group(function () {
     Route::get('/', [ClienteController::class, 'showFormCliente'])->name('cliente');
     Route::post('/cadastra-cliente', [ClienteController::class, 'actionCadastraCliente'])->name('formClienteAction');
-    Route::post('/cliente/{nome}', [ClienteController::class, 'showClienteByName'])->name('tableClienteByName');
+    Route::post('/pesquisa', [ClienteController::class, 'showClienteByName'])->name('tableClienteByName');
+    Route::get('/detalhes-cliente/{id}', [ClienteController::class, 'showClienteDetalhes'])->name('tableClienteDetalhe');
     Route::get('/lista-cliente', [ClienteController::class, 'showListCliente'])->name('tableClientes');
 });
 

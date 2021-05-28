@@ -64,4 +64,9 @@ class ClienteController extends Controller
             'listaClientes' => $lista
         ]);
     }
+
+    public function showClienteDetalhes($id)
+    {
+        return view('tableClienteDetalhes');
+    }
 }

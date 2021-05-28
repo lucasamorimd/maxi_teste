@@ -23,6 +23,7 @@
                                 <th class="text-center">Nome do Responsável</th>
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Celular</th>
+                                <th class="text-center">Detalhar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +39,12 @@
                                 <td class="text-center">{{$cliente->nome_responsavel}}</td>
                                 <td class="text-center">{{$cliente->cpf}}</td>
                                 <td class="text-center">{{$cliente->celular}}</td>
+                                <td class="td-actions text-center">
+                                    <a class="btn btn-info btn-simple" href="{{route('tableClienteDetalhe',$cliente->id)}}">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </td>
+
                             </tr>
                             @endforeach
                             @else

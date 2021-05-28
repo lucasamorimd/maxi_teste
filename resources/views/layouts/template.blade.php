@@ -11,9 +11,11 @@
     <link href="{{asset('css/fonts.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/font-awsome.min.css')}}" rel="stylesheet" />
     <!-- Material Kit CSS -->
-    <link href="{{asset('css/material-dashboard.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('js/jquery.js')}}" rel="text/javascript" />
-    <link href="{{asset('js/material-dashboard.min.js')}}" rel="text/javascript" />
+    <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet" />
+    <!--CORE JS -->
+    <script src="{{asset('js/jquery.js')}}" rel="text/javascript"></script>
+    <script src="{{asset('js/bootstrap/popper.min.js')}}" rel="text/javascript"></script>
+    <script src="{{asset('js/bootstrap/bootstrap-material-design.min.js')}}" rel="text/javascript"></script>
 </head>
 
 <body>
