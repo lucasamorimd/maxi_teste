@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorePropostaRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PropostaController extends Controller
 {
@@ -82,5 +83,9 @@ class PropostaController extends Controller
     public function export()
     {
         return Excel::download(new PropostaExport, 'proposta.xlsx');
+    }
+    public function downloadDocument($nome)
+    {
+        return Storage::download($nome);
     }
 }

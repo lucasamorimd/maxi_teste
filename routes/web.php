@@ -41,6 +41,7 @@ Route::prefix('proposta')->group(function () {
     Route::get('/lista-propostas', [PropostaController::class, 'showListProposta'])->name('tablePropostas');
     Route::post('/cadastra-proposta', [PropostaController::class, 'actionCadastraProposta'])->name('formPropostaAction');
     Route::get('/exportar', [PropostaController::class, 'export'])->name('exportTableProposta');
+    Route::get('/download/{nome}', [PropostaController::class, 'downloadDocument'])->name('downloadDocument');
 });
 
 Route::fallback(function () {

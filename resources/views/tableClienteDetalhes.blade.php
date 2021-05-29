@@ -62,6 +62,12 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <div class="card">
+                    <div class="card-body">
+                        Não há dados cadastrados ainda.
+                    </div>
+                </div>
                 @endif
             </div>
         </div>

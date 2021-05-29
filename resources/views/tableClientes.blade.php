@@ -41,14 +41,18 @@
                                 <td class="text-center">{{$cliente->celular}}</td>
                                 <td class="td-actions text-center">
                                     <a class="btn btn-info btn-simple" href="{{route('tableClienteDetalhe',$cliente->id)}}">
-                                        <i class="material-icons">edit</i>
+                                        <i class="material-icons">info</i>
                                     </a>
                                 </td>
 
                             </tr>
                             @endforeach
                             @else
-                            Nenhum Cliente cadastrado
+                            <div class="card">
+                                <div class="card-body">
+                                    Não há dados cadastrados ainda.
+                                </div>
+                            </div>
                             @endif
                         </tbody>
                     </table>

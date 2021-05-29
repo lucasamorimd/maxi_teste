@@ -23,6 +23,7 @@
                                 <th class="text-center">Valor Parcela R$</th>
                                 <th class="text-center">Total</th>
                                 <th class="text-center">Status</th>
+                                <th class="text-center">Anexo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,10 +39,15 @@
                                 <td class="text-center">{{number_format($proposta->valor_parcela,2,',','.')}}</td>
                                 <td class="text-center">{{number_format($proposta->valor_total,2,',','.')}}</td>
                                 <td class="text-center">{{$proposta->status}}</td>
+                                <td class="text-center"><a href="#">{{$proposta->arquivo_anexo}}</a></td>
                             </tr>
                             @endforeach
                             @else
-                            Nenhuma Proposta cadastrado
+                            <div class="card">
+                                <div class="card-body">
+                                    Não há dados cadastrados ainda.
+                                </div>
+                            </div>
                             @endif
                         </tbody>
                     </table>

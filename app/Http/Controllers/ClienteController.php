@@ -76,17 +76,21 @@ class ClienteController extends Controller
         WHERE id = :id_cliente',
             ['id_cliente' => $id]
         );
-        $dados_propostas = DB::select(
-            'SELECT * FROM propostas
-         WHERE id_cliente = :id_cliente',
-            ['id_cliente' => $id]
-        );
-        return view(
-            'tableClienteDetalhes',
-            [
-                'cliente' => $dados_cliente,
-                'propostas' => $dados_propostas
-            ]
-        );
+        if ($dados_cliente) {
+            $dados_propostas = DB::select(
+                'SELECT * FROM propostas
+             WHERE id_cliente = :id_cliente',
+                ['id_cliente' => $id]
+            );
+            return view(
+                'tableClienteDetalhes',
+                [
+                    'cliente' => $dados_cliente,
+                    'propostas' => $dados_propostas
+                ]
+            );
+        } else {
+            return view('404');
+        }
     }
 }
