@@ -10,10 +10,12 @@
                 <p class="card-category">Todos os Clientes cadastrados</p>
             </div>
             <div class="card-body">
+                @if(count($listaClientes)>0)
                 <div class="table-responsive">
                     <table class="table table-bordered table-success table-striped table-hover">
                         <thead>
                             <tr>
+                                <th class="text-center">Detalhar</th>
                                 <th class="text-center">Razão Social</th>
                                 <th class="text-center">Nome Fantasia</th>
                                 <th class="text-center">CNPJ</th>
@@ -23,13 +25,16 @@
                                 <th class="text-center">Nome do Responsável</th>
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Celular</th>
-                                <th class="text-center">Detalhar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($listaClientes)>0)
                             @foreach($listaClientes as $cliente)
                             <tr>
+                                <td class="td-actions text-center">
+                                    <a class="btn btn-info btn-simple" href="{{route('tableClienteDetalhe',$cliente->id)}}">
+                                        <i class="material-icons">info</i>
+                                    </a>
+                                </td>
                                 <td class="text-center">{{$cliente->razao_social}}</td>
                                 <td class="text-center">{{$cliente->nome_fantasia}}</td>
                                 <td class="text-center">{{$cliente->cnpj}}</td>
@@ -39,11 +44,6 @@
                                 <td class="text-center">{{$cliente->nome_responsavel}}</td>
                                 <td class="text-center">{{$cliente->cpf}}</td>
                                 <td class="text-center">{{$cliente->celular}}</td>
-                                <td class="td-actions text-center">
-                                    <a class="btn btn-info btn-simple" href="{{route('tableClienteDetalhe',$cliente->id)}}">
-                                        <i class="material-icons">info</i>
-                                    </a>
-                                </td>
 
                             </tr>
                             @endforeach

@@ -26,7 +26,7 @@ class CreatePropostasTable extends Migration
             $table->text('data_parcelas');
             $table->string('arquivo_anexo');
             $table->string('status');
-            $table->dateTime('proposta_updated_at')->useCurrentOnUpdate();
+            $table->dateTime('proposta_updated_at')->useCurrentOnUpdate()->nullable();
             $table->dateTime('proposta_created_at')->useCurrent();
         });
     }

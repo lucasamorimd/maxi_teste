@@ -18,8 +18,8 @@ class CreateUsuariosTable extends Migration
             $table->string('nome');
             $table->string('email');
             $table->string('senha');
-            $table->dateTime('usuario_updated_at')->useCurrent();
-            $table->dateTime('usuario_created_at')->useCurrentOnUpdate();
+            $table->dateTime('usuario_updated_at')->useCurrentOnUpdate()->nullable();
+            $table->dateTime('usuario_created_at')->useCurrent();
         });
     }
 

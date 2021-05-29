@@ -39,6 +39,7 @@
                                                 <th class="text-center">Valor Parcela R$</th>
                                                 <th class="text-center">Total</th>
                                                 <th class="text-center">Status</th>
+                                                <th class="text-center">Anexo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -52,6 +53,11 @@
                                                 <td class="text-center">{{number_format($proposta->valor_parcela,2,',','.')}}</td>
                                                 <td class="text-center">{{number_format($proposta->valor_total,2,',','.')}}</td>
                                                 <td class="text-center">{{$proposta->status}}</td>
+                                                <td class="td-actions text-center">
+                                                    <a class="btn btn-danger btn-simple" href="{{ route('downloadDocument',$proposta->arquivo_anexo)}}">
+                                                        <i class="material-icons">file_download</i>
+                                                    </a>
+                                                </td>
                                             </tr>
 
                                         </tbody>

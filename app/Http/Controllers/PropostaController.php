@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Exports\PropostaExport;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Proposta;
 use App\Http\Requests\StorePropostaRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,15 +16,19 @@ class PropostaController extends Controller
         $listaClientes = DB::select('SELECT id, razao_social FROM clientes');
         return view('formProposta', ['clientes' => $listaClientes]);
     }
+
     public function actionCadastraProposta(StorePropostaRequest $request)
     {
-        //pdf ou doc
+        //Verificação para aceitar apenas pdf ou doc
         if ($request->documento->extension() === 'pdf' || $request->documento->extension() === 'doc') {
+
             $cliente_nome = DB::selectOne(
                 "SELECT razao_social FROM clientes WHERE id = :id",
                 ['id' => $request->select_cliente]
             );
-            $nameFile =  date('Y_m_d') . $cliente_nome->razao_social . '.' . $request->documento->extension();
+
+            $nameFile =  date('Y_m_d_') . md5(time() . rand(0, 999)) . '.' . $request->documento->extension();
+
             DB::insert('INSERT INTO propostas(
                 id_cliente,
                 servico,
@@ -64,15 +68,20 @@ class PropostaController extends Controller
                 'arquivo_anexo' => $nameFile,
                 'status' => $request->select_status
             ]);
-            $request->documento->storeAs('documents', $nameFile);
+
+            $request->documento->storeAs('public/documentos', $nameFile);
+
+
             $aviso = "Proposta cadastrada com sucesso!";
             $cor = "success";
         } else {
+
             $aviso = "Você não colocou um arquivo Válido, por favor verificar o tipo de arquivo (PDF ou DOC)";
             $cor = "danger";
         }
         return redirect()->route('home')->with('aviso', ['msg' => $aviso, 'cor' => $cor]);
     }
+
     public function showListProposta()
     {
         $listaProposta = DB::select('SELECT * FROM propostas as p INNER JOIN clientes as c ON p.id_cliente = c.id');
@@ -80,12 +89,15 @@ class PropostaController extends Controller
             'listaPropostas' => $listaProposta
         ]);
     }
+
     public function export()
     {
         return Excel::download(new PropostaExport, 'proposta.xlsx');
     }
+
     public function downloadDocument($nome)
     {
-        return Storage::download($nome);
+        $filepath = storage_path() . "\app\public\documentos/" . $nome;
+        return response()->download($filepath);
     }
 }

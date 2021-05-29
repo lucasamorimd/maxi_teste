@@ -10,6 +10,7 @@
                 <p class="card-category">Todas as Propostas cadastradas</p>
             </div>
             <div class="card-body">
+                @if(count($listaPropostas)>0)
                 <div class="table-responsive">
                     <table class="table table-bordered table-success table-striped table-hover">
                         <thead>
@@ -27,7 +28,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($listaPropostas)>0)
                             @foreach($listaPropostas as $proposta)
                             <tr>
                                 <td class="text-center">{{$proposta->razao_social}}</td>
@@ -39,19 +39,23 @@
                                 <td class="text-center">{{number_format($proposta->valor_parcela,2,',','.')}}</td>
                                 <td class="text-center">{{number_format($proposta->valor_total,2,',','.')}}</td>
                                 <td class="text-center">{{$proposta->status}}</td>
-                                <td class="text-center"><a href="#">{{$proposta->arquivo_anexo}}</a></td>
+                                <td class="td-actions text-center">
+                                    <a class="btn btn-danger btn-simple" href="{{ route('downloadDocument',$proposta->arquivo_anexo)}}">
+                                        <i class="material-icons">file_download</i>
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
-                            @else
-                            <div class="card">
-                                <div class="card-body">
-                                    Não há dados cadastrados ainda.
-                                </div>
-                            </div>
-                            @endif
                         </tbody>
                     </table>
                     <a href="{{route('exportTableProposta')}}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Exportar</a>
+                    @else
+                    <div class="card">
+                        <div class="card-body">
+                            Não há dados cadastrados ainda.
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
