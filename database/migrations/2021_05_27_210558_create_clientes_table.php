@@ -24,8 +24,8 @@ class CreateClientesTable extends Migration
             $table->string('nome_responsavel');
             $table->string('cpf');
             $table->string('celular');
-            $table->dateTime('cliente_updated_at')->nullable();
-            $table->dateTime('cliente_created_at')->nullable();
+            $table->dateTime('cliente_updated_at')->useCurrentOnUpdate();
+            $table->dateTime('cliente_created_at')->useCurrent();
         });
     }
 
