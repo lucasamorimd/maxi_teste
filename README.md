@@ -26,10 +26,6 @@ Proposta
  anexar_arquivo,
  status (em aberto, aprovada, fechada)
 
-## CRIAR UM BANCO DE DADOS COM O NOME "maxi_teste"
-## SE CASO CRIAR UM BANCO COM OUTRO NOME ALTERAR A CONSTANTE DB_DATABASE NO ARQUIVO .ENV
-## AO CRIAR O BANCO E CONFIGURAR O NOME NO .ENV, RODAR O COMANDO "php artisan migrate" NA RAIZ DO PROJETO PARA CONFIGURAR AS TABELAS.
-
  ## MER (Modelo de entidade e relacionamentos)
 
 **1. Um cliente recebe várias propostas, mas cada proposta é feita apenas a um cliente**
