@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PropostaController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\PropostaController;
 |
 */
 
-Route::view('/', 'home')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //Ações para Usuário
 Route::prefix('/usuario')->group(function () {
@@ -39,6 +40,7 @@ Route::prefix('proposta')->group(function () {
     Route::get('/', [PropostaController::class, 'showFormProposta'])->name('proposta');
     Route::get('/lista-propostas', [PropostaController::class, 'showListProposta'])->name('tablePropostas');
     Route::post('/cadastra-proposta', [PropostaController::class, 'actionCadastraProposta'])->name('formPropostaAction');
+    Route::get('/exportar', [PropostaController::class, 'export'])->name('exportTableProposta');
 });
 
 Route::fallback(function () {

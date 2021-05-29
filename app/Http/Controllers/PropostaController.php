@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePropostaRequest;
+use App\Exports\PropostaExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\StorePropostaRequest;
 
 class PropostaController extends Controller
 {
@@ -63,10 +65,12 @@ class PropostaController extends Controller
             ]);
             $request->documento->storeAs('documents', $nameFile);
             $aviso = "Proposta cadastrada com sucesso!";
+            $cor = "success";
         } else {
             $aviso = "Você não colocou um arquivo Válido, por favor verificar o tipo de arquivo (PDF ou DOC)";
+            $cor = "danger";
         }
-        return redirect()->route('home')->with('aviso', $aviso);
+        return redirect()->route('home')->with('aviso', ['msg' => $aviso, 'cor' => $cor]);
     }
     public function showListProposta()
     {
@@ -74,5 +78,9 @@ class PropostaController extends Controller
         return view('tablePropostas', [
             'listaPropostas' => $listaProposta
         ]);
+    }
+    public function export()
+    {
+        return Excel::download(new PropostaExport, 'proposta.xlsx');
     }
 }

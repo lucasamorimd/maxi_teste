@@ -24,7 +24,8 @@ class ClienteController extends Controller
         $cpf = $request->input('cpf');
         $celular = $request->input('celular');
 
-        DB::insert('INSERT INTO clientes(
+        DB::insert(
+            'INSERT INTO clientes(
             razao_social, 
             nome_fantasia, 
             cnpj, 
@@ -43,18 +44,21 @@ class ClienteController extends Controller
             :telefone,
             :nome_responsavel,
             :cpf,
-            :celular)', [
-            'razao_social' => $razao_social,
-            'nome_fantasia' => $nome_fantasia,
-            'cnpj' => $cnpj,
-            'endereco' => $endereco,
-            'email' => $email,
-            'telefone' => $telefone,
-            'nome_responsavel' => $nome_responsavel,
-            'cpf' => $cpf,
-            'celular' => $celular
-        ]);
-        return redirect()->route('home')->with('aviso', 'Cliente cadastrado!');
+            :celular)',
+            //Bindes
+            [
+                'razao_social' => $razao_social,
+                'nome_fantasia' => $nome_fantasia,
+                'cnpj' => $cnpj,
+                'endereco' => $endereco,
+                'email' => $email,
+                'telefone' => $telefone,
+                'nome_responsavel' => $nome_responsavel,
+                'cpf' => $cpf,
+                'celular' => $celular
+            ]
+        );
+        return redirect()->route('home')->with('aviso', ['msg' => 'Cliente Cadastrado', 'cor' => 'success']);
     }
 
     public function showListCliente()
@@ -67,6 +71,22 @@ class ClienteController extends Controller
 
     public function showClienteDetalhes($id)
     {
-        return view('tableClienteDetalhes');
+        $dados_cliente = DB::selectOne(
+            'SELECT * FROM clientes
+        WHERE id = :id_cliente',
+            ['id_cliente' => $id]
+        );
+        $dados_propostas = DB::select(
+            'SELECT * FROM propostas
+         WHERE id_cliente = :id_cliente',
+            ['id_cliente' => $id]
+        );
+        return view(
+            'tableClienteDetalhes',
+            [
+                'cliente' => $dados_cliente,
+                'propostas' => $dados_propostas
+            ]
+        );
     }
 }

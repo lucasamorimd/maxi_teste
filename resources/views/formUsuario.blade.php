@@ -39,8 +39,8 @@
                                 <label class="bmd-label-floating">Confirme sua Senha</label>
                                 <input type="password" class="form-control" name="confirma_senha">
                             </div>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
-                        <button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
                         <div class="clearfix"></div>
                     </div>
                 </form>

@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @section('title', 'Cadastrar Usuário')
-@section('clienteform', 'active')
+@section('clienteform', 'active puff-in-center')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -59,8 +59,8 @@
                                 <label class="bmd-label-floating">Celular</label>
                                 <input type="text" class="form-control" name="celular">
                             </div>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
-                        <button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
                         <div class="clearfix"></div>
                     </div>
                 </form>

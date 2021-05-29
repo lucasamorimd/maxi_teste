@@ -11,6 +11,7 @@
     <link href="{{asset('css/fonts.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/font-awsome.min.css')}}" rel="stylesheet" />
     <!-- Material Kit CSS -->
+    <link href="{{asset('css/app.css')}}" rel="stylesheet" />
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet" />
     <!--CORE JS -->
     <script src="{{asset('js/jquery.js')}}" rel="text/javascript"></script>
@@ -39,31 +40,31 @@
                     </li>
                     <li class="nav-item @yield('clienteform')">
                         <a class="nav-link" href="{{route('cliente')}}">
-                            <i class="material-icons">dashboard</i>
+                            <i class="material-icons">group_add</i>
                             <p>Novo Cliente</p>
                         </a>
                     </li>
                     <li class="nav-item @yield('clientetable')">
                         <a class="nav-link" href="{{route('tableClientes')}}">
-                            <i class="material-icons">dashboard</i>
+                            <i class="material-icons">view_list</i>
                             <p>Lista de Clientes</p>
                         </a>
                     </li>
                     <li class="nav-item @yield('propostaform')">
                         <a class="nav-link" href="{{route('proposta')}}">
-                            <i class="material-icons">dashboard</i>
+                            <i class="material-icons">post_add</i>
                             <p>Cadastrar Proposta</p>
                         </a>
                     </li>
                     <li class="nav-item @yield('propostatable')">
                         <a class="nav-link" href="{{route('tablePropostas')}}">
-                            <i class="material-icons">dashboard</i>
+                            <i class="material-icons">ballot</i>
                             <p>Propostas Cadastradas</p>
                         </a>
                     </li>
                     <li class="nav-item @yield('usuario')">
                         <a class="nav-link" href="{{route('usuario')}}">
-                            <i class="material-icons">dashboard</i>
+                            <i class="material-icons">person_add</i>
                             <p>Criar Usuário</p>
                         </a>
                     </li>

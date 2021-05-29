@@ -45,6 +45,7 @@
                             @endif
                         </tbody>
                     </table>
+                    <a href="{{route('exportTableProposta')}}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Exportar</a>
                 </div>
             </div>
         </div>

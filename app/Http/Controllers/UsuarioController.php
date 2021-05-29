@@ -24,9 +24,11 @@ class UsuarioController extends Controller
                 'senha' => $senha_usuario,
             ]);
             $aviso = "Usuário cadastrado";
+            $cor = "success";
         } else {
             $aviso = "Erro no cadastro";
+            $cor = "danger";
         }
-        return redirect()->route('home')->with('aviso', $aviso);
+        return redirect()->route('home')->with('aviso', ['msg' => $aviso, 'cor' => $cor]);
     }
 }
